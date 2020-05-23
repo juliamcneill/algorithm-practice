@@ -35,13 +35,11 @@ var translateRomanNumeral = function (romanNumeral) {
     // compare the character's value to the next character's value
     // if its value is lower than the next character
     if (DIGIT_VALUES[romanNumeral[i]] < DIGIT_VALUES[romanNumeral[i + 1]]) {
-      // subtract the two values and add the results to the string
-      result += DIGIT_VALUES[romanNumeral[i + 1]] - DIGIT_VALUES[romanNumeral[i]];
-      // increment an extra i
-      i++;
+      // subtract the value from result
+      result -= DIGIT_VALUES[romanNumeral[i]];
       // if its value is higher than or equal to the next character
     } else {
-      // add the value to the string
+      // add the value to result
       result += DIGIT_VALUES[romanNumeral[i]];
     }
   }
