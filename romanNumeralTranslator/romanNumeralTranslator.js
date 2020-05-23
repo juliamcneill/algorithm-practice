@@ -27,7 +27,26 @@ var DIGIT_VALUES = {
   M: 1000
 };
 
-var translateRomanNumeral = function(romanNumeral) {
-// TODO: Implement me!
-
+var translateRomanNumeral = function (romanNumeral) {
+  // Input: a romanNumeral in string format
+  var result = 0;
+  // iterate through each character in the string
+  for (var i = 0; i < romanNumeral.length; i++) {
+    // compare the character's value to the next character's value
+    // if its value is lower than the next character
+    if (DIGIT_VALUES[romanNumeral[i]] < DIGIT_VALUES[romanNumeral[i + 1]]) {
+      // subtract the two values and add the results to the string
+      result += DIGIT_VALUES[romanNumeral[i + 1]] - DIGIT_VALUES[romanNumeral[i]];
+      // increment an extra i
+      i++;
+      // if its value is higher than or equal to the next character
+    } else {
+      // add the value to the string
+      result += DIGIT_VALUES[romanNumeral[i]]
+    }
+  }
+  // Output: an integer version of that romanNumeral
+  return result;
 };
+
+translateRomanNumeral("MDCXLVII") // 1647
