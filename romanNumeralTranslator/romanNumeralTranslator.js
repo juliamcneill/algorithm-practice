@@ -42,7 +42,7 @@ var translateRomanNumeral = function (romanNumeral) {
       // if its value is higher than or equal to the next character
     } else {
       // add the value to the string
-      result += DIGIT_VALUES[romanNumeral[i]]
+      result += DIGIT_VALUES[romanNumeral[i]];
     }
   }
   // Output: an integer version of that romanNumeral
