@@ -7,7 +7,26 @@
  * Extra credit: Make your function handle negative numbers.
  */
 
+var largestProductOfThree = function (array) {
+  // Input: an array of numbers
+  // without negatives, use the highest three integers
+  // with negatives, use the highest three integers, but an even number should be negative
+  // combinations: largest three positives (-1 * -2 * -3)
+  //               largest one positive and largest two negatives (- 1 * 0 * 1)
+  array.sort();
+  var n = array.length;
 
-var largestProductOfThree = function(array) {
-  // TODO: everything
+  if (n < 3) {
+    return "String is not long enough to find largest product of three.";
+  } else {
+    var product = Math.max(
+      array[n - 1] * array[n - 2] * array[n - 3],
+      array[n - 1] * array[0] * array[1]
+    );
+
+    // Output: the highest product integer of three of those numbers
+    return product;
+  }
 };
+
+largestProductOfThree([2, 1, 3, 7]); // 42
