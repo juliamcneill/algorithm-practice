@@ -13,7 +13,9 @@ var largestProductOfThree = function (array) {
   // with negatives, use the highest three integers, but an even number should be negative
   // combinations: largest three positives (-1 * -2 * -3)
   //               largest one positive and largest two negatives (- 1 * 0 * 1)
-  array.sort();
+  array.sort(function (a, b) {
+    return a - b;
+  });
   var n = array.length;
 
   if (n < 3) {
@@ -29,4 +31,4 @@ var largestProductOfThree = function (array) {
   }
 };
 
-largestProductOfThree([2, 1, 3, 7]); // 42
+largestProductOfThree([-31, 41, 34, -37, -17, 29]); // 47027
