@@ -4,13 +4,24 @@
  * a prime number, false if it's not.
  */
 
-var primeTester = function(n) {
-  if (typeof n !== 'number' || n < 1 || n % 1 !== 0) {
+var primeTester = function (n) {
+  // Input: an integer
+  if (typeof n !== "number" || n < 1 || n % 1 !== 0) {
     // n isn't a number or n is less than 1 or n is not an integer
     return false;
   }
-  // TODO: return true if n is prime, false otherwise
+  // we only need to test the divisors up to n**1/2 to determine if the number will be prime
+  for (i = 2; i < n ** (1 / 2); i++) {
+    if (n % i == 0) {
+      return false;
+    }
+  }
+
+  return true;
+  // Output: a boolean that states whether the integer is a prime
 };
+
+primeTester(18);
 
 /* Extra credit: Write a function that generates a list of all prime numbers
  * in a user-specified range (inclusive). If you're not quite sure where to start,
@@ -19,6 +30,6 @@ var primeTester = function(n) {
  */
 
 var primeSieve = function (start, end) {
+  // Input: a starting and ending integer
+  // Output: an array of prime numbers between the input integers
 };
-
-
