@@ -29,7 +29,38 @@ primeTester(18);
  * saucy, check out the Sieve of Atkin.)
  */
 
+// this function still has a mistake in which the last prime in 100 (97) doesn't
+// show up in the results
 var primeSieve = function (start, end) {
-  // Input: a starting and ending integer
-  // Output: an array of prime numbers between the input integers
+  // Input: a starting and ending value, inclusive
+  var array = [];
+  var results = [];
+
+  // create an array of true values indexed by start to end integers
+  for (var i = start; i <= end; i++) {
+    array.push(true);
+  }
+
+  // for each number from 2 to the square root of the end
+  for (var i = 2; i <= Math.sqrt(end); i++) {
+    // if the number is marked as prime
+    if (array[i]) {
+      // mark its multiples as not prime
+      for (var j = i * i; j <= end; j += i) {
+        array[j] = false;
+      }
+    }
+  }
+
+  // push all of the still true indexes to a new array
+  for (var i = 2; i < end; i++) {
+    if (array[i]) {
+      results.push(i);
+    }
+  }
+
+  return results;
+  // Output: an array of the prime numbers between the input values, inclusive
 };
+
+primeSieve(10, 100);
