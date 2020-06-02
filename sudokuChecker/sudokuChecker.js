@@ -18,9 +18,48 @@ Example input:
 157638429"
 */
 
-
-
 function sudokuChecker(board) {
   // Your code here.
-  
+  // Input: a string representing the sudoku board: nine parts with \n between each part
+  // split the board into an array of rows
+
+  // consider checking for sums before duplicates to save time
+  var sum;
+
+  // split the board into rows
+  var rows = board.split("\n");
+
+  // for each row, check that there is each number only once
+  for (var row in rows) {
+    sum = 0;
+    for (var i = 0; i < row.length; i++) {
+      sum += row[i];
+    }
+    if (sum !== 45) {
+      return "invalid";
+    }
+  }
+  // for each column, check that there is each number only once
+  for (var i = 0; i < row.length; i++) {
+    var newColumn = [];
+    for (var j = 0; i < row.length; i++) {
+      newColumn.push(row[j][i]);
+    }
+    sum = 0;
+    for (var i = 0; i < newColumn.length; i++) {
+      sum += newColumn[i];
+    }
+    if (sum !== 45) {
+      return "invalid";
+    }
+  }
+
+  // for each square, check that there is each number only once
+
+  return "solved";
+  // Output: a string, either 'solved' or 'invalid'
 }
+
+sudokuChecker(
+  "735814296\n896275314\n214963857\n589427163\n362189745\n471356982\n923541678\n648792531\n157638429"
+);
