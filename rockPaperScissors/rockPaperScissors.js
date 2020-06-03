@@ -27,7 +27,7 @@ var rockPaperScissors = function (numRounds) {
   // set up an empty results array
   var results = [];
 
-  // find all combinations of R, P, and S, non-repetitive and location sensitive
+  // find all combinations of R, P, and S, repetitive and location sensitive
   // to do this, set up a recursive function that adds in each possible letter for each character
   function combinations(temp) {
     // if the length of a string reaches 3, add it to the results array
