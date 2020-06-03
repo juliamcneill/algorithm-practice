@@ -18,7 +18,7 @@
  *
  */
 
-var rockPaperScissors = function () {
+var rockPaperScissors = function (numRounds) {
   // Input: none
   // set up an array of all possible plays
   var options = ["R", "P", "S"];
@@ -31,7 +31,7 @@ var rockPaperScissors = function () {
   // to do this, set up a recursive function that adds in each possible letter for each character
   function combinations(temp) {
     // if the length of a string reaches 3, add it to the results array
-    if (temp.length === 3) {
+    if (temp.length === numRounds) {
       return results.push(temp);
     }
     // for each potential play, add to the algorithm and recall the function
@@ -48,4 +48,4 @@ var rockPaperScissors = function () {
   // Output: an array with strings, each three characters long, one for every combination of R, P, and S
 };
 
-rockPaperScissors();
+rockPaperScissors(5);
