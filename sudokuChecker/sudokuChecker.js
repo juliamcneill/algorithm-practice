@@ -19,35 +19,31 @@ Example input:
 */
 
 function sudokuChecker(board) {
-  // Your code here.
   // Input: a string representing the sudoku board: nine parts with \n between each part
-  // split the board into an array of rows
-
-  // consider checking for sums before duplicates to save time
-  var sum;
 
   // split the board into rows
   var rows = board.split("\n");
 
   // for each row, check that there is each number only once
-  for (var row in rows) {
+  for (var i = 0; i < rows.length; i++) {
     sum = 0;
-    for (var i = 0; i < row.length; i++) {
-      sum += row[i];
+    for (var j = 0; j < rows[i].length; j++) {
+      sum += parseInt(rows[i][j]);
     }
     if (sum !== 45) {
       return "invalid";
     }
   }
+
   // for each column, check that there is each number only once
-  for (var i = 0; i < row.length; i++) {
+  for (var i = 0; i < rows.length; i++) {
     var newColumn = [];
-    for (var j = 0; i < row.length; i++) {
-      newColumn.push(row[j][i]);
+    for (var j = 0; i < rows.length; i++) {
+      newColumn.push(rows[i][j]);
     }
     sum = 0;
-    for (var i = 0; i < newColumn.length; i++) {
-      sum += newColumn[i];
+    for (var k = 0; k < newColumn.length; k++) {
+      sum += parseInt(newColumn[k]);
     }
     if (sum !== 45) {
       return "invalid";
@@ -55,6 +51,23 @@ function sudokuChecker(board) {
   }
 
   // for each square, check that there is each number only once
+  for (var i = 0; i < rows.length; i += 3) {
+    for (var j = 0; j < rows.length; j += 3) {
+      var newBox = [];
+      for (var k = 0; k < rows.length / 3; k++) {
+        newBox.push(rows[i][k + j]);
+        newBox.push(rows[i + 1][k + j]);
+        newBox.push(rows[i + 2][k + j]);
+      }
+      sum = 0;
+      for (var l = 0; l < newBox.length; l++) {
+        sum += parseInt(newBox[l]);
+      }
+      if (sum !== 45) {
+        return "invalid";
+      }
+    }
+  }
 
   return "solved";
   // Output: a string, either 'solved' or 'invalid'
