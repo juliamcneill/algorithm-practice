@@ -35,18 +35,37 @@
 
 // This function is to help you test, and should not be incorporated in your solution.
 // It will transform an array of numbers into an array of valid objects.
-var testingTransform = function(array) {
+var testingTransform = function (array) {
   var transform = [];
-  
+
   for (var i = 0; i < array.length; i++) {
-    transform.push({value: array[i], i: i});
+    transform.push({ value: array[i], i: i });
   }
 
   return transform;
 };
 
-var insertionSort = function(array
-) {
-  // Your code goes here. Feel free to add helper functions if needed.
+var insertionSort = function (array) {
+  // Input: unsorted array
+  // loop over the given array
+  for (var i = 1; i < array.length; i++) {
+    // grab the current location
+    var currentLocation = i;
+    // grab the current element
+    var currentValue = array[i];
+    // iterate through the array backwards from the current location
+    while (currentLocation && currentValue < array[currentLocation - 1]) {
+      // set each index to equal the index before
+      array[currentLocation] = array[currentLocation - 1];
+      // when you reach a value greater than the value, stop
+      currentLocation -= 1;
+    }
+
+    // insert the current element at this location
+    array[currentLocation] = currentValue;
+  }
   return array;
+  // Output: sorted array
 };
+
+insertionSort([2, 1, 3]); // [1, 2, 3]
