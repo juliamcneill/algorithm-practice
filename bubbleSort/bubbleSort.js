@@ -48,6 +48,8 @@ var bubbleSort = function (array) {
       }
     }
   }
+  while (swaps);
+
   // Output: a sorted array
   return array;
 };
