@@ -1,5 +1,3 @@
-/*jshint expr:true*/
-
 /*
  * Bubble sort is the most basic sorting algorithm in all of Computer
  * Sciencedom. It works by starting at the first element of an array and
@@ -19,20 +17,39 @@
  * swapped we can assume the list is sorted and can exit the function early.
  * After this optimization, what is the time complexity of your algorithm?
  *
- * Moar credits: Do you need to consider every element every time you iterate
+ * More credits: Do you need to consider every element every time you iterate
  * through the array? Make it happen, boss. Again: Has the time complexity of
  * your algorithm changed?
-*/
+ */
 
 /*
  * Example usage:
  * bubbleSort([2, 1, 3]); // yields [1, 2, 3]
  *
-*/
+ */
 
 // Feel free to add helper functions if needed.
 
-
-var bubbleSort = function(array) {
-  // Your code here.
+var bubbleSort = function (array) {
+  // Input: an unsorted array
+  var stillSwapping = true;
+  // loop through the length of the array
+  if (stillSwapping) {
+    stillSwapping = false;
+    // look at the first index of the array each time
+    // iterate through the rest of the array, comparing this number to each other number
+    for (let i = 0; i < array.length - 1; i++) {
+      // when the first index is greater than a number, it places itself after this number
+      if (array[i] > array[i + 1]) {
+        let temp = array[i + 1];
+        array[i + 1] = array[i];
+        array[i] = temp;
+        stillSwapping = true;
+      }
+    }
+  }
+  // Output: a sorted array
+  return array;
 };
+
+bubbleSort([2, 1, 3]); // [1, 2, 3]
