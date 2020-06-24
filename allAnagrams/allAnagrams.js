@@ -39,8 +39,8 @@ var allAnagrams = function (string) {
             results.push(temp);
           }
         }
-        // and continue the recursive loop without the current letter
-        buildAnagrams(temp, string);
+        // and continue the recursive loop
+        buildAnagrams(temp, string.slice(i, i + 1));
         // remove the letter that you just added to try again with a new letter
         temp = temp.slice(0, -1);
       }
