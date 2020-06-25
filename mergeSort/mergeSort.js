@@ -95,8 +95,46 @@
  *
  */
 
+var mergeSort = function (array) {
+  // Input: unsorted array
 
+  // check if array can be sorted based on its length
+  // if it has a length of only 1, return it
+  if (array.length <= 1) {
+    return array;
+  }
 
-var mergeSort = function(array) {
-  // Your code here.
+  // split the array in 2 parts by its middle
+  var leftSide = array.splice(0, Math.ceil(array.length / 2));
+  var rightSide = array;
+
+  // returning the result of this to the next function up in the
+  // recursive stack, or to the test
+  return mergeHelper(mergeSort(leftSide), mergeSort(rightSide));
+  // Output: sorted array
 };
+
+function mergeHelper(leftSide, rightSide) {
+  // Input: an array split into two subarrays
+  var merged = [];
+  var i = 0;
+  var j = 0;
+
+  // compare each element in the array, and add the element that is smaller
+  while (i < leftSide.length && j < rightSide.length) {
+    if (leftSide[i] < rightSide[j]) {
+      merged.push(leftSide[i]);
+      // increment this index tracker to indicate moving on to the next integer to sort
+      i++;
+    } else {
+      merged.push(rightSide[j]);
+      j++;
+    }
+  }
+
+  // return the merged array concatenated to any extra largest number
+  return merged.concat(leftSide.slice(i)).concat(rightSide.slice(j));
+  // Output: these arrays, sorted into each other, in one array
+}
+
+mergeSort([4, 1, 8, 4, 9, 10, 1, 4]);
