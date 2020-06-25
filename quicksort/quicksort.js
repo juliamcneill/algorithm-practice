@@ -14,6 +14,7 @@ var quicksort = function (array) {
   // Input: unsorted array
 
   var test = {};
+  
   // check if array can be sorted based on whether it includes unique values
   // if it cannot, return the array as it is
   for (let i = 0; i < array.length; i++) {
