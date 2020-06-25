@@ -31,22 +31,37 @@
  *   See https://www.dartmouth.edu/~chance/teaching_aids/books_articles/Mann.pdf .
  */
 
-var shuffleDeck = function(deck) {
-  // Your code here
+// use Fisher-Yates shuffle to create a complete random shuffled deck
+var shuffleDeck = function (deck) {
+  var cardsLeftToShuffle = deck.length;
+
+  while (cardsLeftToShuffle > 0) {
+    let randomIndex = Math.floor(Math.random() * cardsLeftToShuffle);
+    cardsLeftToShuffle -= 1;
+    var temp = deck[randomIndex];
+    deck[randomIndex] = deck[cardsLeftToShuffle];
+    deck[cardsLeftToShuffle] = temp;
+  }
+
+  return deck;
 };
 
 // Ordered deck generator provided for your testing convenience
 // (You may alter this function, but an unaltered copy will be used for tests.)
-var orderedDeck = function() {
-  var suits = [ '♥', '♣', '♠', '♦' ];
-  var values = [ 'A', 2, 3, 4, 5, 6, 7, 8, 9, 10, 'J', 'Q', 'K' ];
+var orderedDeck = function () {
+  var suits = ["♥", "♣", "♠", "♦"];
+  var values = ["A", 2, 3, 4, 5, 6, 7, 8, 9, 10, "J", "Q", "K"];
   var deck = [];
 
-  suits.forEach(function(suit) {
-    values.forEach(function(value) {
+  suits.forEach(function (suit) {
+    values.forEach(function (value) {
       deck.push(value + suit);
     });
   });
 
   return deck;
 };
+
+var deck = orderedDeck();
+var shuffled = shuffleDeck(deck);
+console.log(shuffled);
