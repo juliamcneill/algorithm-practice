@@ -14,7 +14,7 @@ var quicksort = function (array) {
   // Input: unsorted array
 
   var test = {};
-  
+
   // check if array can be sorted based on whether it includes unique values
   // if it cannot, return the array as it is
   for (let i = 0; i < array.length; i++) {
@@ -39,7 +39,7 @@ var quicksort = function (array) {
   }
 
   // returning the result of this to the next function up in the
-  // recursive stack, or to the text
+  // recursive stack, or to the test
   return splitArray(lower).concat(splitArray(higher));
   // Output: sorted array
 };
