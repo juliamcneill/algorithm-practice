@@ -32,6 +32,7 @@
  */
 
 // use Fisher-Yates shuffle to create a complete random shuffled deck
+// the benefit of using the Fisher-Yates shuffles reducing space complexity from 2n to n
 var shuffleDeck = function (deck) {
   var cardsLeftToShuffle = deck.length;
 
