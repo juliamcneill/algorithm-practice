@@ -43,7 +43,39 @@
  *  - Make your function accept a parameter for the direction of rotation (1 = clockwise, -1 = counterclockwise)
  */
 
-var rotateMatrix = function(matrix
-) {
-  // Your code here.
+var rotateMatrix = function (matrix) {
+  // create our empty new rotated matrix and a temporary array to build out each row
+  var rotatedMatrix = [];
+  var temp = [];
+
+  // created a nested loop that iterates over each column index of the rows
+  for (let i = 0; i < matrix[0].length; i++) {
+    // and then iterates over each row, backwards, at that index
+    for (let j = matrix.length - 1; j >= 0; j--) {
+      // adding these values to a new temporary row
+      temp.push(matrix[j][i]);
+    }
+    // and then adding this new temporary row to the rotated matrix
+    rotatedMatrix.push(temp);
+    // before clearing out the temporary row to do this again at the next column index
+    temp = [];
+  }
+
+  return rotatedMatrix;
 };
+
+var matrix = [
+  [1, 2, 3, 4],
+  [5, 6, 7, 8],
+  [9, "A", "B", "C"],
+  ["D", "E", "F", "G"],
+];
+
+/** [
+  ["D", 9, 5, 1],
+  ["E", "A", 6, 2],
+  ["F", "B", 7, 3],
+  ["G", "C", 8, 4],
+] */
+
+rotateMatrix(matrix);
