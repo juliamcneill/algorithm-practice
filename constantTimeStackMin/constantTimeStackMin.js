@@ -15,26 +15,45 @@
  */
 
 /**
-  * Stack Class
-  */
-  var Stack = function() {
+ * Stack Class
+ */
+var Stack = function () {
+  var storage = {};
+  var index = 0;
+  var minValueStorage = [];
 
   // add an item to the top of the stack
-    this.push = function(value) {
-    };
-
-  // remove an item from the top of the stack
-    this.pop = function() {
-    };
-
-  // return the number of items in the stack
-    this.size = function() {
-    };
-  
-  // return the minimum value in the stack
-    this.min = function() {
-
-    };
-
+  this.push = function (value) {
+    if (
+      !minValueStorage.length ||
+      value <= minValueStorage[minValueStorage.length - 1]
+    ) {
+      minValueStorage.push(value);
+    }
+    storage[index] = value;
+    index++;
   };
 
+  // remove an item from the top of the stack
+  this.pop = function () {
+    if (storage.size()) {
+      index--;
+      var takenOut = storage[index];
+      if (takenOut === minValueStorage[minValueStorage.length - 1]) {
+        minValueStorage.pop();
+      }
+      delete storage[index];
+      return takenOut;
+    }
+  };
+
+  // return the number of items in the stack
+  this.size = function () {
+    return index;
+  };
+
+  // return the minimum value in the stack
+  this.min = function () {
+    return minValueStorage[minValueStorage.length - 1];
+  };
+};
