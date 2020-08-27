@@ -13,25 +13,36 @@
 // Assumption: Uppercase and Lowercase letters are handled as different characters.
 var commonCharacters = function (string1, string2) {
   // Input: two strings of characters
-  // Create results string
-  var resultsObj = {};
+
+  // Create tracker, results string, and missing variable
+  var tracker = {};
   var results = "";
+  let missing;
+
   // Iterate through string1
-  for (var i = 0; i < string1.length; i++) {
+  for (let i = 0; i < string1.length; i++) {
     // Check if character is found in results object
-    if (resultsObj[string1[i]] !== true) {
-      // If not, check if found in string2, also using indexOf
-      if (string2.indexOf(string1[i]) !== -1) {
-        // If so, add to results string and results object
-        resultsObj[string1[i]] = true;
-        results += (string1[i]);
+    if (tracker[string1[i]] !== true) {
+      missing = false;
+      // If not, check if found in all other strings, iterating through arguments and using indexOf
+      for (let j = 1; j < arguments.length; j++) {
+        if (arguments[j].indexOf(string1[i]) === -1) {
+          missing = true;
+          continue;
+        }
+      }
+      // If character shows up in all other strings, add to tracker and results string
+      if (missing === false) {
+        tracker[string1[i]] = true;
+        results += string1[i];
       }
     }
   }
+
   // Return results string
   return results;
   // Output: a string containing the common characters
 };
 
-commonCharacters('acexivou', 'aegihobu') // 'aeiou'
-commonCharacters('Hello, my name is Julia!', 'My name is Julia!') // 'el mynaisJu!'
+commonCharacters("acexivou", "aegihobu"); // 'aeiou'
+commonCharacters("Hello, my name is Julia!", "My name is Julia!"); // 'el mynaisJu!'
