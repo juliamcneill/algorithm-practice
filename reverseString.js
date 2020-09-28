@@ -7,3 +7,24 @@
 var reverseString = function (s) {
   return s.reverse();
 };
+
+var reverseString = function (s) {
+  var temp;
+
+  var reverseMechanism = function (s, start, end) {
+    if (start >= end) {
+      return;
+    }
+
+    temp = s[start];
+    s[start] = s[end];
+    s[end] = temp;
+
+    start++;
+    end--;
+
+    reverseMechanism(s, start, end);
+  };
+
+  reverseMechanism(s, 0, s.length - 1);
+};
