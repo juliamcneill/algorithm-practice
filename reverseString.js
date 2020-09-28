@@ -10,21 +10,14 @@ var reverseString = function (s) {
 
 var reverseString = function (s) {
   var temp;
-
-  var reverseMechanism = function (s, start, end) {
-    if (start >= end) {
-      return;
-    }
-
+  var start = 0;
+  var end = s.length - 1;
+  while (start < end) {
     temp = s[start];
     s[start] = s[end];
     s[end] = temp;
 
     start++;
     end--;
-
-    reverseMechanism(s, start, end);
-  };
-
-  reverseMechanism(s, 0, s.length - 1);
+  }
 };
